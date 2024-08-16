@@ -1,0 +1,17 @@
+certifi==2024.7.4
+cffi==1.16.0
+charset-normalizer==3.3.2
+cryptography==43.0.0
+exceptiongroup==1.2.2
+idna==3.7
+iniconfig==2.0.0
+msal==1.30.0
+packaging==24.1
+pluggy==1.5.0
+pycparser==2.22
+PyJWT==2.9.0
+pytest==8.3.2
+python-dotenv==1.0.1
+requests==2.32.3
+tomli==2.0.1
+urllib3==2.2.2
