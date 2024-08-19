@@ -2,7 +2,7 @@
 import os
 from dotenv import load_dotenv
 
-from o365_service.o365 import SharepointService
+from o365Service.o365 import SharepointService
 
 
 load_dotenv()
