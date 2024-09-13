@@ -102,7 +102,7 @@ class SharePointClient:
         print(f'Processing file: {file_name}')
 
         # Skip if the file is a folder or a shortcut or doesn't have "Provozní hodnoty 2024" in the path or is not a .xlsx file
-        if not file_name.startswith(f"{self.year_folder} Provozní hodnoty") or (not file_name.endswith('.xlsx') and not file_name.endswith('.xlsm')):
+        if (not file_name.endswith('.xlsx') and not file_name.endswith('.xlsm')):
             return
 
         # Ensure the download path exists
@@ -173,7 +173,7 @@ class SharepointService:
         # Download the files
         for file in sharepoint_client.files:
             sharepoint_client.download_file(site_id, drive_id, file, self.download_path)
-
+            
     def dropDataFolder(self):
         import shutil
         shutil.rmtree(self.download_path)
