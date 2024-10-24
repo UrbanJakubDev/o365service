@@ -15,10 +15,12 @@ def main():
     tenant_id = os.getenv('TENANT_ID')
     client_id = os.getenv('CLIENT_ID')
     client_secret = os.getenv('CLIENT_SECRET')
+    download_path = "./dataFiles"
     sc = SharepointService(
         tenant_id=tenant_id,
         client_id=client_id,
-        client_secret=client_secret
+        client_secret=client_secret,
+        download_path=download_path
     )
 
     sc.run(year=2024)
