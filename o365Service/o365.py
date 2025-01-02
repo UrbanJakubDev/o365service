@@ -11,6 +11,12 @@ from pathlib import Path
 # Load environment variables from .env file
 load_dotenv()
 
+# Add logger to the service
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 
 class SharePointClient:
     def __init__(self, tenant_id, client_id, client_secret, resource_url, year):
@@ -99,12 +105,12 @@ class SharePointClient:
             self.files = self.get_folder_content(
                 site_id, drive_id, jednotky_folder_id)
         else:
-            print("Jednotky folder not found.")
+            logger.error(f"Folder '{sub_folder}' not found")
 
     def download_file(self, site_id, drive_id, file, download_path):
         file_id = file['id']
         file_name = file['name']
-        print(f'Processing file: {file_name}')
+        logger.info(f'Downloading file: {file_name}')
 
         # Skip if the file is a folder or a shortcut or doesn't have "Provozní hodnoty 2024" in the path or is not a .xlsx file
         if (not file_name.endswith('.xlsx') and not file_name.endswith('.xlsm')):
@@ -123,11 +129,10 @@ class SharePointClient:
                 with open(os.path.join(download_path, file_name), 'wb') as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
-                print(f'File downloaded successfully to {download_path}')
             except Exception as e:
-                print(f'Error writing file {file_name}: {e}')
+                logger.error(f'Failed to download file: {str(e)}')
         else:
-            print(f'Failed to download file: {response.status_code}')
+            logger.error(f'Failed to download file: {response.text}')
 
 
 

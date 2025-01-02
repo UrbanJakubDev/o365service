@@ -24,7 +24,6 @@ def main():
     )
 
     sc.run(year=2024)
-
     sc.dropDataFolder()
 
 
