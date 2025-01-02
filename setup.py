@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="o365Service",
-    version="1.0.1",
+    version="1.0.2",
     packages=find_packages(include=['o365Service', 'o365Service.*']),
     description="Custom o365 service for downloading files from SharePoint drive",
     long_description=open('README.md').read(),
